@@ -17,7 +17,7 @@ function Header(props) {
                     </div>
                     <div className="menu">
                         <ul>
-                            <li><a href="/">{props.details.firstName}</a></li>
+                            <li><a href="/">{props.personDetails.firstName}</a></li>
                             <li><a href="/">Blogs</a></li>
                             <li><a href="/">Doc</a></li>
                             <li><a href="/">About us</a></li>
@@ -29,6 +29,7 @@ function Header(props) {
                         <button onClick={showValue} className="btn btn-success">search</button>
                     </div>
                 </div>
+                
             </div>
 
 

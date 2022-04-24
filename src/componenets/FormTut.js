@@ -23,11 +23,15 @@ const FormTut = () => {
 
     function submitForm(e) {
         e.preventDefault();
-        const user = {...userDetails, date:new Date().getHours().toString()+":"+new Date().getMinutes().toString()};
-        // console.log(dataList);
-        dataList.push(user);
-        setDataList([...dataList]);
-        console.log(dataList);
+        if (userDetails.gender == 'select gender') {
+            alert("Wrong input");
+        } else {
+            const user = { ...userDetails, date: new Date().getHours().toString() + ":" + new Date().getMinutes().toString() };
+            // console.log(dataList);
+            dataList.push(user);
+            setDataList([...dataList]);
+            console.log(dataList);
+        }
         setUserDetails({
             username: "",
             email: "",
@@ -36,7 +40,7 @@ const FormTut = () => {
             gender: "select gender"
 
         });
-        
+
 
 
 
@@ -74,7 +78,7 @@ const FormTut = () => {
                         <label className="form-label">Gender</label>
                         <select className="form-select" value={userDetails.gender} name="gender"
                             onChange={handleInput}>
-                            <option></option>
+                            <option>{userDetails.gender}</option>
                             <option >M</option>
                             <option >F</option>
                         </select>
