@@ -3,43 +3,81 @@
 const obj = [
     {
         id:1,
-        firstName:"Vishal",
-        lastName:"Gupta",
-        age:25,
-        email:"Vishalgt581@gmail.com",
-        profile:"avatar1.jpg"
+        image:"image1.jpg",
+        size:''
         
     },
     {
         id:2,
-        firstName:"Nitesh",
-        lastName:"Gupta",
-        age:26,
-        email:"Nitesh911@gmail.com",
-        profile:"avatar1.jpg"
+        image:"image2.jpg",
+        size:'tall'
     },
     {
         id:3,
-        firstName:"Sahil",
-        lastName:"Singh",
-        age:27,
-        email:"Sahil777@gmail.com",
-        profile:"avatar1.jpg"
+        image:"image3.jpg",
+        size:'tall'
     },
     {
         id:4,
-        firstName:"Riwan",
-        lastName:"Gupta",
-        age:2.6,
-        email:"Riwan222@gmail.com"
+        image:"image4.jpg",
+        size:''
     },
     {
         id:5,
-        firstName:"Lavkush",
-        lastName:"Gupta",
-        age:29,
-        email:"Lavkush8286@gmail.com"
-    }
+        image:"image5.jpg",
+        size:'tall'
+    },
+    {
+        id:6,
+        image:"image6.jpg",
+        size:''
+    },
+    {
+        id:7,
+        image:"image7.jpg",
+        size:''
+    },
+    {
+        id:8,
+        image:"image8.jpg",
+        size:'tall'
+    },
+    {
+        id:9,
+        image:"image9.jpg",
+        size:''
+    },
+    {
+        id:10,
+        image:"image10.jpg",
+        size:''
+    },
+    {
+        id:11,
+        image:"image11.jpg",
+        size:'tall'
+    },
+    {
+        id:12,
+        image:"image12.jpg",
+        size:''
+    },
+    {
+        id:13,
+        image:"image13.jpg",
+        size:'wide'
+    },
+    {
+        id:14,
+        image:"image14.jpg",
+        size:'tall'
+    },
+    {
+        id:15,
+        image:"image15.jpg",
+        size:'wide'
+    },
+    
 ]
 
 export default obj;

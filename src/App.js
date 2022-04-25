@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './componenets/Navbar';
 import Imageadd from './componenets/Imageadd';
+// import Gallary from './componenets/Gallary';
 
 // import Header from './componenets/Header';
 // import FormTut from './componenets/FormTut';
@@ -9,17 +10,13 @@ import Imageadd from './componenets/Imageadd';
 
 function App() {
 
-  // obj.forEach(val=>console.log(val.firstName));
-
-
   return (
     <div className='container'>
       <Navbar />
       <Imageadd />
-      
-      
+
     </div>
-    
+
   );
 }
 
