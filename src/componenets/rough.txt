@@ -1,0 +1,25 @@
+/* <Header personDetails={person}/>
+      {obj.map((details)=>{
+        return (<Card id={details.id} key={details.id}
+         firstName={details.firstName}
+          lastName={details.lastName}
+          age={details.age}
+          email={details.email}
+          profile={details.profile} />)
+      })} */
+
+
+==========PhotoGallary Content===========
+
+      const [value, setValue] = useState(0);
+
+  function callAdd(param) {
+    console.log("Working");
+    console.log(param);
+    setValue(pre=>pre+param);
+    
+  }
+  
+<Navbar />
+      <Imageadd addImage={callAdd} />
+      <Gallary update={value}/>

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-function Imageadd() {
+function Imageadd(props) {
+    const [count, setCount] = useState(0);
 
     const [fileInput, setInput] = useState({
-        fileName: '',
-        fileSize: 0,
+        imageName: '',
+        imageSize: 0,
         className: ''
     });
     const [buttonOperation, setButtonOperation] = useState("");
@@ -14,6 +15,10 @@ function Imageadd() {
     }
 
     const [getDim, setDim] = useState(dimension);
+
+    function increment() {
+        setCount(pre => pre + 1);
+    }
 
     const getInputValue = (e) => {
         let img = new Image();
@@ -25,25 +30,31 @@ function Imageadd() {
         img.onload = () => {
             let height = img.height;
             let width = img.width;
-
             setDim({
                 width: width,
                 height: height
 
             })
+
+
+            // const fetchDim=()=>{
+            //     setDim(pre=> console.log(pre));
+            // }
+            // fetchDim();
         }
         console.log(fileSize);
         const type = fileType.split('/')[1];
         if (fileName && (type === 'png' || type === 'jpeg')) {
-            setInput({ ...fileInput, fileName: fileName, fileSize: fileSize })
+            setInput({ ...fileInput, imageName: fileName, imageSize: fileSize });
+            increment();
 
             setButtonOperation('');
 
         } else {
 
             setInput({
-                fileName: 'Wrong type file',
-                fileSize: 0,
+                imageName: 'Wrong type file',
+                imageSize: 0,
                 className: ''
 
             });
@@ -51,35 +62,75 @@ function Imageadd() {
 
         }
 
-    };
+    }
 
+    function buttonClick() {
+        console.log(getDim, "ButtonClicked");
+        if (getDim.height > getDim.width) {
+            console.log("Tall");
+            setInput(pre => ({ ...pre, className: 'tall' }));
 
+        } else {
+            setInput(pre => ({ ...pre, className: '' }));
+
+        }
+    }
 
 
     function formSubmit(e) {
         e.preventDefault();
 
-        if (fileInput.fileSize === 0) {
-            setInput({ ...fileInput, fileName: "Wrong option" });
+        if (fileInput.imageSize === 0) {
+            setInput({ ...fileInput, imageName: "Wrong option" });
 
         } else {
-            if (getDim.width > getDim.height) {
-                setInput({ ...fileInput, className: "wide" });
-                console.log(typeof getDim.width, "Wide");
+            console.log(fileInput);
+            // console.log(getDim);
 
-            } else {
+            fetch('http://localhost:8080/save', {
+                method: 'POST',
+                body: JSON.stringify(fileInput),
+                headers: {
+                    'Content-type': 'application/json'
+                }
 
-                setInput({ ...fileInput, className: "tall" });
-                console.log(typeof getDim.width, "tall");
+            }).then((res) => {
+                if (res.ok) {
+                    console.log("success" + " " + res);
+
+                    return res.text();
 
 
+                } else {
+                    throw Error("Not working" + " " + res.url);
+                }
 
-            }
+            }).then((data) => {
+                // data.forEach(element => {
+                //     console.log(element);
+                // });
+                console.log(data);
+                console.log(count);
+                callApp(count);
+            })
+                .catch((err) => console.log("Error is here", err));
+
+            setInput({
+                imageName: '',
+                imageSize: 0,
+                className: ''
+
+            });
+
 
 
         }
-        console.log(fileInput);
-        console.log(getDim);
+
+    }
+
+    function callApp(a) {
+        props.addImage(a);
+
     }
 
     return (
@@ -87,14 +138,18 @@ function Imageadd() {
             <div className="col-4 m-auto">
 
                 <form onSubmit={formSubmit} className="text-center">
-                    <h5 className="imageName" id="imageName">{fileInput.fileName && ` "${fileInput.fileName}" selected`}</h5>
+                    <h5 className="imageName" id="imageName">{fileInput.imageName && ` "${fileInput.imageName}" selected`}</h5>
 
                     <input type="file" hidden name="image" id="image-section" onChange={getInputValue} />
                     <label htmlFor="image-section"><i className="fa-solid fa-plus"></i></label><br />
-                    <button type="submit" className={`btn btn-success mt-2 ${buttonOperation}`}>
+                    <button type="submit" className={`btn btn-success mt-2 ${buttonOperation}`} onClick={buttonClick}>
                         upload
                     </button>
+
                 </form>
+                <div className="col">
+                    <h1>{fileInput.className}</h1>
+                </div>
 
             </div>
         </div>
