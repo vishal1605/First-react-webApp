@@ -16,7 +16,68 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.header .menu ul{
+  margin-bottom: 0;
+}
+
+.header .menu ul li{
+  display: inline-block;
+  margin-right: 10px;
+  list-style: none;
+  text-decoration: none;
+}
+.header .menu ul li Link{
+  padding: 3px 6px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+
 } */
+
+.nav-bar .col{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(240, 94, 50);
+
+}
+
+.nav-bar .col .logo h1{
+  color: white;
+  font-weight: 700;
+}
+.nav-bar .col .links a, .nav-bar .col .home a{
+  display: inline-block;
+  padding: 3px 6px;
+  color: white;
+  font-size: 17px;
+}
+
+
+.register .col-5{
+  background-color: rgb(183, 175, 175);
+}
+.register .col-5 form .disable{
+  background-color: rgb(243, 86, 86);
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .navbar{
   background-color: aquamarine;
 }

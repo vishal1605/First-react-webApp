@@ -23,3 +23,9 @@
 <Navbar />
       <Imageadd addImage={callAdd} />
       <Gallary update={value}/>
+
+
+===========Router======================
+<Route path='blog' element={<Blog />} exact />
+        <Route path='document' element={<Document />} exact />
+        <Route path='about-us' element={<About />} exact />
