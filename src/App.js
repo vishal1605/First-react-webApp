@@ -1,13 +1,17 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import './App.css';
-import Head from './reducerProject/Head';
+// import Index from './redux-tutorial/Index';
+import Main from './redux-tutorial/Main';
+import store from './redux-tutorial/store';
 
 function App() {
 
   return (
-    <div className="container">
-      <Head />
-    </div>
+
+    <Provider store={store}>
+      <Main />
+    </Provider>
 
   );
 }
